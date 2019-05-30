@@ -11,10 +11,8 @@ INSTRUCTIONS:
 
 WORK IN PROGRESS:
 1. Hope to make it so you will not need to edit code to use different lists. Want to allow user to create their own list which in turn will create a new .txt file in a seperate folder where all movie lists are stored. Then I want the program to discover all .txt files in the folder and list out which list the user would like to use. 
-  
   a). Possibly convert this functionality in the future to allow for genre sorting and other filtering functionality 
 2. Want to turn this program into an executable for easy sharing 
 3. Want to attach code to a basic UI for easy usability 
-  
   a). Possibly convert into a web app once desktop app is functional???
 
