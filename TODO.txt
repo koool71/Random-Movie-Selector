@@ -1,7 +1,7 @@
 TODO:
-1. Make it so when movie list is added to in program it updates the actual text file being used so it is saved
-2. Add comments before each function explaining there contents
-3. Look into making an executable 
+1. Add comments before each function explaining there contents
+2. Look into making an executable 
+3. Look into adding a UI
 
 OPTIMIZE:
 

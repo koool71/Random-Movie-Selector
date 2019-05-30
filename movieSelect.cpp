@@ -21,6 +21,7 @@ int random(int x, int y){
 	return (rand() % (y - x) + x);
 }
 
+// Updates the file the list lives at whenever there's a change made 
 void writeList(){
 	string line;
 	if(list.is_open()){
@@ -32,6 +33,7 @@ void writeList(){
 	}
 }
 
+// Initializes the starting list from a provided text file
 void initList(){
 	string line;
 	if(list.is_open()){
@@ -42,14 +44,21 @@ void initList(){
 	}
 }
 
+// Adds a movie to the movie list
 void addMovie(){
 	string newMovie;
 	cout << "\nWhat movie would you like to add?" << endl;
 	getline(cin, newMovie);
 	movies.push_back(newMovie);
+	list.open("movieList.txt", ios::out | ios::trunc);
+	writeList();
 	mainMenu();
 }
 
+// Selects a movie from the movie list at random and asks the user if thy would like to watch the movie or not
+// If the users says they will watch the movie the movie will be deleted from the list
+// If the user says they will not watch the movie it will bring them back to the main menu to either try again or 
+// 	take another action
 void chooseMovie(){
 	string input;
 	int movieSelection = random(0, movies.size());
@@ -65,6 +74,7 @@ void chooseMovie(){
 	mainMenu();
 }
 
+// Prints the existing movie list
 void printList(){
 	cout << endl;
 	for(unsigned int i = 0; i < movies.size(); ++i){
