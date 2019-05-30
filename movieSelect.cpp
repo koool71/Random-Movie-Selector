@@ -21,6 +21,27 @@ int random(int x, int y){
 	return (rand() % (y - x) + x);
 }
 
+void writeList(){
+	string line;
+	if(list.is_open()){
+		for(unsigned int i = 0; i < movies.size() - 1; ++i){
+			list << movies[i] << "\n";
+		}
+		list << movies[movies.size()-1];
+		list.close();
+	}
+}
+
+void initList(){
+	string line;
+	if(list.is_open()){
+		while(getline(list, line)){
+			movies.push_back(line);
+		}
+		list.close();
+	}
+}
+
 void addMovie(){
 	string newMovie;
 	cout << "\nWhat movie would you like to add?" << endl;
@@ -32,12 +53,14 @@ void addMovie(){
 void chooseMovie(){
 	string input;
 	int movieSelection = random(0, movies.size());
-	cout << "\n\nMOVIE\n" << movies[movieSelection] << endl;
+	cout << "\n" << movies[movieSelection] << endl;
 	cout << "Enter 1 if you will watch. Enter anything else to cancel" << endl;
 	getline(cin, input); 
 	if(input == "1"){
-		cout << "Enjoy the movie! It has now been deleted from your list" << endl;
 		movies.erase(movies.begin() + movieSelection);
+		cout << "Enjoy the movie! It has now been deleted from your list" << endl;
+		list.open("movieList.txt", ios::out | ios::trunc);
+		writeList();
 	} 	
 	mainMenu();
 }
@@ -77,14 +100,9 @@ void mainMenu(){
 // Initializes the movie list via input text file
 // Begins the program by calling the Main Menu
 int main(){
-	string line;
-	if(list.is_open()){
-		while(getline(list, line)){
-			movies.push_back(line);
-		}
-	}
+	initList();
 	mainMenu();
-	list.close();
+	
 
 	return 0;
 }
