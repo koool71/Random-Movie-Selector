@@ -1,0 +1,4 @@
+OPTIMIZE:
+1. Make movies list global once I pull it from the input file so I don't have to keep passing it into each function 
+
+KNOWN BUGS:
